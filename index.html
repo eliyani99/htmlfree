@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor y Vista Previa</title> 
+  <link rel="stylesheet" href="stylo.css">
+</head>
+<body>
+  <h1>Editor y Vista Previa</h1>
+  <div id="container">
+   
+    <textarea id="editor" placeholder="Escribe HTML aquí..."></textarea>
+
+   
+    <div id="preview"></div>
+  </div>
+
+  <script>
+    const editor = document.getElementById('editor');
+    const preview = document.getElementById('preview');
+
+    const updatePreview = () => {
+      const htmlContent = editor.value;
+      preview.innerHTML = htmlContent; 
+    };
+
+    editor.addEventListener('input', updatePreview);
+    editor.value = `
+<h1>Encabezado H1</h1>
+<h2>Subtítulo H2</h2>
+<p>Este es un ejemplo de un enlace: <a href="">Visitar sitio</a></p>
+<p>Este es un ejemplo de <code>código en línea</code>.</p>
+<pre>
+Bloque de código:
+console.log("Hola mundo");
+</pre>
+<ul>
+  <li>Elemento de lista 1</li>
+  <li>Elemento de lista 2</li>
+</ul>
+<blockquote>
+  Esta es una cita en bloque. "El único límite es tu imaginación".
+</blockquote>
+<p><strong>Texto en negrita</strong></p>
+<img src="th.jpg" alt="Imagen de ejemplo">
+    `;
+
+   
+    updatePreview();
+  </script>
+
+</body>
+</html>
